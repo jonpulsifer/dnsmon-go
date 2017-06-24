@@ -28,6 +28,7 @@ import (
 	"time"
 
 	"github.com/google/gopacket"
+	// ref https://github.com/google/gopacket/blob/master/doc.go
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 	"github.com/prometheus/client_golang/prometheus"
@@ -85,7 +86,6 @@ listens to a given network interface and logs DNS traffic.
 
 		packets := gopacket.NewPacketSource(handle, handle.LinkType())
 		for packet := range packets.Packets() {
-			t := time.Now().UTC()
 			err := parser.DecodeLayers(packet.Data(), &decodedLayers)
 			// errors are only for packets we don't care about
 			if err != nil {
@@ -93,7 +93,7 @@ listens to a given network interface and logs DNS traffic.
 			}
 
 			// start dns logger
-			dnsLog := log.WithFields(log.Fields{"time": t.Format(time.RFC3339)})
+			dnsLog := log.WithFields(log.Fields{})
 
 			// iterate through decoded packets
 			for _, layerType := range decodedLayers {

@@ -1,7 +1,7 @@
 package: github.com/j4wn/dnsmon-go
 import:
 - package: github.com/google/gopacket
-  version: ^1.1.12
+  version: e20408befa7dcef61c3c35f53df06d3f8a194e60
   subpackages:
   - layers
   - pcap

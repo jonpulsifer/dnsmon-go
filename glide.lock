@@ -1,5 +1,5 @@
-hash: d39ca6fd3e0148fe1eb40e30cc9d2f2d4e80f523f953b254c7d14c0dcfbdd16e
-updated: 2017-06-24T16:03:09.9729071-04:00
+hash: 79c9527daeab0da3912ff6eafb00396b0122255a58f4937551b1924765389cf3
+updated: 2017-06-24T16:24:54.8052231-04:00
 imports:
 - name: github.com/beorn7/perks
   version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
@@ -10,7 +10,7 @@ imports:
   subpackages:
   - proto
 - name: github.com/google/gopacket
-  version: b83f94714c36e30ce851be1d5a0a5226f9f1bca4
+  version: e20408befa7dcef61c3c35f53df06d3f8a194e60
   subpackages:
   - layers
   - pcap
