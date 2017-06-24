@@ -1,0 +1,16 @@
+package: github.com/JonPulsifer/dnsmon-go
+import:
+- package: github.com/google/gopacket
+  version: ^1.1.12
+  subpackages:
+  - layers
+  - pcap
+- package: github.com/prometheus/client_golang
+  version: ^0.8.0
+  subpackages:
+  - prometheus
+- package: github.com/sirupsen/logrus
+  version: ^1.0.0
+- package: github.com/spf13/cobra
+- package: github.com/spf13/pflag
+  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66

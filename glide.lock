@@ -1,0 +1,51 @@
+hash: d39ca6fd3e0148fe1eb40e30cc9d2f2d4e80f523f953b254c7d14c0dcfbdd16e
+updated: 2017-06-24T16:03:09.9729071-04:00
+imports:
+- name: github.com/beorn7/perks
+  version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
+  subpackages:
+  - quantile
+- name: github.com/golang/protobuf
+  version: 6a1fa9404c0aebf36c879bc50152edcc953910d2
+  subpackages:
+  - proto
+- name: github.com/google/gopacket
+  version: b83f94714c36e30ce851be1d5a0a5226f9f1bca4
+  subpackages:
+  - layers
+  - pcap
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: c12348ce28de40eed0136aa2b644d0ee0650e56c
+  subpackages:
+  - pbutil
+- name: github.com/prometheus/client_golang
+  version: c5b7fccd204277076155f10851dad72b76a49317
+  subpackages:
+  - prometheus
+- name: github.com/prometheus/client_model
+  version: 6f3806018612930941127f2a7c6c453ba2c527d2
+  subpackages:
+  - go
+- name: github.com/prometheus/common
+  version: 0866df4b85a18d652b6965be022d007cdf076822
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: 822d4a1f8edcbcbc71e8d1fd6527b12331a6d0ad
+  subpackages:
+  - xfs
+- name: github.com/sirupsen/logrus
+  version: 202f25545ea4cf9b191ff7f846df5d87c9382c2b
+- name: github.com/spf13/cobra
+  version: 4d647c8944eb42504a714e57e97f244ed6344722
+- name: github.com/spf13/pflag
+  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
+- name: golang.org/x/sys
+  version: c23410a886927bab8ca5e80b08af6a56faeb330d
+  subpackages:
+  - unix
+testImports: []
