@@ -20,7 +20,7 @@
 
 package main
 
-import "github.com/JonPulsifer/dnsmon-go/cmd"
+import "github.com/j4wn/dnsmon-go/cmd"
 
 func main() {
 	cmd.Execute()

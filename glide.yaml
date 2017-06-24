@@ -1,4 +1,4 @@
-package: github.com/JonPulsifer/dnsmon-go
+package: github.com/j4wn/dnsmon-go
 import:
 - package: github.com/google/gopacket
   version: ^1.1.12
