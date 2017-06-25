@@ -22,14 +22,12 @@ package main
 
 import (
 	"flag"
-	"net/http"
 	"strings"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -74,11 +72,6 @@ func main() {
 			"snaplen":     snaplen,
 		}).Info("No flags specified, using defaults")
 	}
-
-	// set up metrics endpoint
-	log.Info("Prometheus endpoint: http://0.0.0.0:8080/metrics")
-	http.Handle("/metrics", promhttp.Handler())
-	go http.ListenAndServe("0.0.0.0:8080", nil)
 
 	// set up interface handler
 	log.Infof("Listening on device: %s", iface)
