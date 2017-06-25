@@ -25,19 +25,12 @@ import (
 	"net/http"
 	"strings"
 
-	"time"
-
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
-)
-
-var (
-	iface   string
-	timeout time.Duration
 )
 
 // RootCmd represents the base command when called without any subcommands
@@ -51,38 +44,49 @@ var (
 // #patcheswelcome #cloudnative`,
 
 func init() {
+	// register dnsCounter metric
 	prometheus.MustRegister(dnsCounter)
 }
 
 func main() {
-	flag.DurationVar(&timeout, "timeout", 30, "timeout for capture")
-	flag.StringVar(&iface, "interface", "eth0", "interface to listen on")
+	var iface string
+
+	// cli flags
+	flag.StringVar(&iface, "interface", "", "interface to listen on")
 	flag.Parse()
 
-	devices, err := pcap.FindAllDevs()
-	if err != nil {
-		log.Fatal(err)
-	}
+	if iface == "" {
+		log.Info("Interface not specified, enumerating devices")
 
-	for _, device := range devices {
-		if len(device.Addresses) > 0 {
-			iface = device.Name
-			break
+		// find network interfaces
+		devices, err := pcap.FindAllDevs()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		// get the first device with an IP address
+		for _, device := range devices {
+			if len(device.Addresses) > 0 {
+				iface = device.Name
+				break
+			}
 		}
 	}
 
+	// set up metrics endpoint
 	log.Info("Prometheus endpoint: http://0.0.0.0:8080/metrics")
 	http.Handle("/metrics", promhttp.Handler())
 	go http.ListenAndServe("0.0.0.0:8080", nil)
 
+	// set up interface handler
 	log.Infof("Listening on device: %s", iface)
 	handle, err := pcap.OpenLive(iface, 65536, true, pcap.BlockForever)
-
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer handle.Close()
 
+	// packet vars
 	var (
 		eth     layers.Ethernet
 		ip4     layers.IPv4

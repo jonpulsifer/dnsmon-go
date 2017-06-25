@@ -1,5 +1,5 @@
-hash: 79c9527daeab0da3912ff6eafb00396b0122255a58f4937551b1924765389cf3
-updated: 2017-06-24T16:24:54.8052231-04:00
+hash: b18a4eb0cb171e577edab041d8afa70a060d36457e6d3470523b5a67020a1a30
+updated: 2017-06-24T22:31:19.8940123-04:00
 imports:
 - name: github.com/beorn7/perks
   version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
@@ -14,8 +14,6 @@ imports:
   subpackages:
   - layers
   - pcap
-- name: github.com/inconshreveable/mousetrap
-  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/matttproud/golang_protobuf_extensions
   version: c12348ce28de40eed0136aa2b644d0ee0650e56c
   subpackages:
@@ -24,6 +22,7 @@ imports:
   version: c5b7fccd204277076155f10851dad72b76a49317
   subpackages:
   - prometheus
+  - prometheus/promhttp
 - name: github.com/prometheus/client_model
   version: 6f3806018612930941127f2a7c6c453ba2c527d2
   subpackages:
@@ -40,10 +39,6 @@ imports:
   - xfs
 - name: github.com/sirupsen/logrus
   version: 202f25545ea4cf9b191ff7f846df5d87c9382c2b
-- name: github.com/spf13/cobra
-  version: 4d647c8944eb42504a714e57e97f244ed6344722
-- name: github.com/spf13/pflag
-  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
 - name: golang.org/x/sys
   version: c23410a886927bab8ca5e80b08af6a56faeb330d
   subpackages:
