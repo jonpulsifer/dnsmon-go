@@ -39,15 +39,19 @@ func init() {
 }
 
 func main() {
-	var iface string
+	var (
+		iface   string
+		promisc bool
+		snaplen int
+	)
 
 	// cli flags
 	flag.StringVar(&iface, "interface", "", "interface to listen on")
+	flag.BoolVar(&promisc, "promisc", true, "promiscuous mode")
+	flag.IntVar(&snaplen, "snaplen", 65536, "packet snap length")
 	flag.Parse()
 
 	if iface == "" {
-		log.Info("Interface not specified, enumerating devices")
-
 		// find network interfaces
 		devices, err := pcap.FindAllDevs()
 		if err != nil {
@@ -63,6 +67,14 @@ func main() {
 		}
 	}
 
+	if len(flag.Args()) == 0 {
+		log.WithFields(log.Fields{
+			"interface":   iface,
+			"promiscuous": promisc,
+			"snaplen":     snaplen,
+		}).Info("No flags specified, using defaults")
+	}
+
 	// set up metrics endpoint
 	log.Info("Prometheus endpoint: http://0.0.0.0:8080/metrics")
 	http.Handle("/metrics", promhttp.Handler())
@@ -70,7 +82,7 @@ func main() {
 
 	// set up interface handler
 	log.Infof("Listening on device: %s", iface)
-	handle, err := pcap.OpenLive(iface, 65536, true, pcap.BlockForever)
+	handle, err := pcap.OpenLive(iface, int32(snaplen), promisc, pcap.BlockForever)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -118,7 +130,7 @@ func main() {
 				dnsLog = dnsLog.WithFields(log.Fields{
 					"opcode": dns.OpCode.String(),
 					"rcode":  dns.ResponseCode.String(),
-					"id":     int16(dns.ID),
+					"id":     uint16(dns.ID),
 				})
 				for _, query := range dns.Questions {
 					// type, class, opcode, rcode
