@@ -71,7 +71,7 @@ func main() {
 		}
 	}
 
-	log.Warn("servin metrix")
+	log.Info("Prometheus endpoint: http://0.0.0.0:8080/metrics")
 	http.Handle("/metrics", promhttp.Handler())
 	go http.ListenAndServe("0.0.0.0:8080", nil)
 
@@ -134,7 +134,7 @@ func main() {
 						"name":  string(query.Name),
 						"type":  query.Type.String(),
 					})
-					dnsLog.Warn("QUERY")
+					dnsLog.Info("QUERY")
 				}
 				for _, answer := range dns.Answers {
 					dnsCounter.WithLabelValues(answer.Type.String(), answer.Class.String(), dns.OpCode.String(), dns.ResponseCode.String()).Inc()
