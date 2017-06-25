@@ -95,7 +95,7 @@ func main() {
 	packets := gopacket.NewPacketSource(handle, handle.LinkType())
 	for packet := range packets.Packets() {
 		err := parser.DecodeLayers(packet.Data(), &decodedLayers)
-		// errors are only for packets we don't care about
+		// errors are for packets we don't care about
 		if err != nil {
 			log.Debugln(err)
 		}
