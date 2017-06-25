@@ -176,7 +176,7 @@ func main() {
 					case "SRV":
 						dnsLog = dnsLog.WithFields(log.Fields{"priority": int16(answer.SRV.Priority)})
 						dnsLog = dnsLog.WithFields(log.Fields{"weight": int16(answer.SRV.Weight)})
-						dnsLog = dnsLog.WithFields(log.Fields{"prort": int16(answer.SRV.Port)})
+						dnsLog = dnsLog.WithFields(log.Fields{"port": int16(answer.SRV.Port)})
 						dnsLog = dnsLog.WithFields(log.Fields{"name": string(answer.SRV.Name)})
 					}
 					dnsLog.Info("ANSWER")
