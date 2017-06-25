@@ -1,6 +1,19 @@
 steps:
-- name: 'gcr.io/cloud-builders/golang-project'
-  args: ['github.com/JonPulsifer/dnsmon-go', '--tag=gcr.io/$PROJECT_ID/dnsmon-go']
-  env: ['PROJECT_ROOT=github.com/JonPulsifer/dnsmon-go']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=builder', '-f', 'Dockerfile.build', '.']
+  id: build
+
+# - name: 'gcr.io/cloud-builders/go'
+#   args: ['build', '-v']
+#   env: ['GOPATH=.']
+
+- name: 'builder'
+  args: ['github.com/j4wn/dnsmon-go', '--base-image=builder', '--tag=gcr.io/$PROJECT_ID/dnsmon-go:alpine']
+  env: ['PROJECT_ROOT=github.com/j4wn/dnsmon-go']
+
+# check if image runs
+- name: 'gcr.io/$PROJECT_ID/dnsmon-go:alpine'
+  args: ['-h']
+
 images:
 - gcr.io/$PROJECT_ID/dnsmon-go

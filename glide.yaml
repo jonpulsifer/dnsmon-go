@@ -11,6 +11,3 @@ import:
   - prometheus
 - package: github.com/sirupsen/logrus
   version: ^1.0.0
-- package: github.com/spf13/cobra
-- package: github.com/spf13/pflag
-  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
