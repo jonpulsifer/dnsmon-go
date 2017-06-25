@@ -33,16 +33,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// RootCmd represents the base command when called without any subcommands
-// var RootCmd = &cobra.Command{
-// 	Use:   "dnsmon-go",
-// 	Short: "Monitor network interfaces for DNS traffic and log it",
-// 	Long: `
-// Inspired by github.com/gamelinux/passivedns, dnsmon-go
-// listens to a given network interface and logs DNS traffic.
-
-// #patcheswelcome #cloudnative`,
-
 func init() {
 	// register dnsCounter metric
 	prometheus.MustRegister(dnsCounter)
