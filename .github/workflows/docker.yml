@@ -1,0 +1,19 @@
+name: docker
+on:
+  push:
+    paths-ignore:
+    - ".github/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build docker image
+      run: |
+        docker build -t jonpulsifer/ddnsb0t:${{ github.sha }} .
+    - name: Container security scan
+      uses: Azure/container-scan@v0
+      with:
+        image-name: jonpulsifer/ddnsb0t:${{ github.sha }}
+    - name: Lint Dockerfile
+      uses: Shopify/gh-action-hadolint@master

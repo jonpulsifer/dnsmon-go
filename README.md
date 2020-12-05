@@ -1,4 +1,8 @@
-# dnsmon
+# dnsmon-go
+
+![dnsmon-go](https://github.com/jonpulsifer/dnsmon-go/workflows/dnsmon-go/badge.svg)
+![docker](https://github.com/jonpulsifer/dnsmon-go/workflows/docker/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jonpulsifer/dnsmon-go)](https://goreportcard.com/report/github.com/jonpulsifer/dnsmon-go)
 
 This is a little program I wrote inspired by [passivedns](https://github.com/gamelinux/passivedns)
 
@@ -19,4 +23,3 @@ INFO[0003] ANSWER                                        class=IN dst=192.168.2.
 Metrics sponsored in part by prometheus #cloudnative
 
 ![grafana](https://raw.githubusercontent.com/jonpulsifer/dnsmon-go/master/images/grafana.png)
-
