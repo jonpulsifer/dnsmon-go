@@ -1,8 +1,5 @@
 name: dnsmon-go
-on:
-  push:
-    paths-ignore:
-    - ".github/**"
+on: [push, pull_request]
 jobs:
   build:
     name: Build
