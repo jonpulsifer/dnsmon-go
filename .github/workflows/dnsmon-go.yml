@@ -13,10 +13,12 @@ jobs:
       with:
         go-version: 1.15
       id: go
+    - name: Install dependencies
+      run: sudo apt-get -qqy install libpcap-dev
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
-      
+
     - name: Download go modules
       run: go mod download
 
