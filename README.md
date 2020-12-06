@@ -20,6 +20,13 @@ INFO[0003] ANSWER                                        class=IN dst=192.168.2.
 INFO[0003] ANSWER                                        class=IN dst=192.168.2.21 id=19712 ip=192.30.252.154 name=pulsifer.dev opcode=Query rcode="No Error" src=8.8.8.8 type=A
 ```
 
-Metrics sponsored in part by prometheus #cloudnative
+## Grafana
 
 ![grafana](https://raw.githubusercontent.com/jonpulsifer/dnsmon-go/master/images/grafana.png)
+
+A dashboard has been included to get you started using `docker-compose`.
+
+1. `docker-compose up`
+2. Navigate to `localhost:3000` and log in to Grafana using `admin:admin`
+3. Generate some DNS queries using `docker-compose exec dnsmon-go nslookup example.com`
+4. Watch the dashboard go brr

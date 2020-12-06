@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'dnsmon-go-monitor'
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'dnsmon-go'
+    static_configs:
+      - targets: 
+        - localhost:8080
+        - dnsmon-go:8080
+        - host.docker.internal:8080
+        - gateway.docker.internal:8080
