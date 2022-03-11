@@ -6,6 +6,7 @@ COPY . .
 RUN go mod tidy
 RUN GOOS=linux go build -installsuffix cgo -ldflags '-w -s' -o /go/bin/dnsmon-go
 
+# hadolint ignore=DL3007
 FROM alpine:latest
 # hadolint ignore=DL3018
 RUN apk add --no-cache libpcap
