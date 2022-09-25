@@ -1,6 +1,6 @@
 module github.com/jonpulsifer/dnsmon-go
 
-go 1.17
+go 1.19
 
 require (
 	github.com/google/gopacket v1.1.19
