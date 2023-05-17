@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/google/gopacket v1.1.19
 	github.com/prometheus/client_golang v1.15.1
-	github.com/sirupsen/logrus v1.9.1
+	github.com/sirupsen/logrus v1.9.2
 )
 
 require (
